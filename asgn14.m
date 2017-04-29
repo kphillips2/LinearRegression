@@ -18,10 +18,9 @@ X = [ones(length(X),1) X];
 plot(X(:,2),Y,'o') % Plot data from file as scatterplot
 hold on
 
-theta = [0;0]; % Initialize theta values
+theta = zeros(2,1); % Initialize theta values
 theta = gradientDescent(X,Y,theta,learningRate,num_iterations);
 
-% Define hTheta and plot hTheta(X) where X is from data.csv
-hTheta = inline('theta(1) + theta(2)*x','theta','x');
-outputValues = hTheta(theta,X(:,2));
-plot(X(:,2),outputValues) 
+% Plot hTheta(X) where X is from data.csv
+hThetaOutputs = X * theta;
+plot(X(:,2),hThetaOutputs) 
